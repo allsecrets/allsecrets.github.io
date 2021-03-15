@@ -37,120 +37,7 @@
 
 </script>
 
-<title>1 min</title>
-
-<!-- <script type="text/javascript" src="timer.js"></script> -->
-
-<script>
-     
-	var hr = "00";
-	var ms = "01";
-	var sc = "00";
-        
-	var hours = hr;
-	var minutes = ms;
-	var sec = sc;
-     
-	function main()
-	{
-		startTimer('tm');
-	}
- 
-	var Timer = function(element, hours, minutes, sec)
-	{
-		var me = this;
-		this.hours = hours;
-		this.minutes = minutes;
-		this.sec = sec;
-		this.element = element;
-		this.interval = null;
-  
-		this.reduce = function()
-		{
-			if(me.hours + me.minutes + me.sec <= 0)
-			{
-				me.stop();
-				return;
-			}
-			me.sec-=1;
-			if(me.sec<0) me.sec=59,me.minutes-=1;
-			if(me.minutes<0) me.minutes=59,me.hours-=1; 
-			if(me.hours<0) me.hours=23;
-         
-			localStorage.setItem('hours5', me.hours);
-			localStorage.setItem('minutes5', me.minutes);
-			localStorage.setItem('sec5', me.sec);
-         
-			me.sec = me.sec+"";
-			me.minutes = me.minutes+"";
-			me.hours = me.hours+""; 
-			if (me.sec.length<2) me.sec = "0"+me.sec;
-			if (me.minutes.length<2) me.minutes = "0"+me.minutes;
-			if (me.hours.length<2) me.hours = "0"+me.hours;
-			me.element.innerHTML = me.hours+":"+me.minutes+":"+me.sec; 
-		}
-      
-		this.start = function()
-		{      
-			me.interval = setInterval(me.reduce, 100);
-			me.element.className="sp"
-		}
-		this.stop = function()
-		{
-			clearInterval(me.interval);
-			me.element.className="st";
-			document.location.replace("facts.html");
-		}    
-	}
-     
-	function startTimer(obgId)
-	{
-		/*  if(localStorage.getItem('sec5') > 0){return;};*/ 
-		if (localStorage.getItem('sec5') != NaN && localStorage.getItem('sec5') ==0)
-		{
-			hours = hr;
-			minutes = ms;
-			sec = sc; 
-         
-			localStorage.setItem('hours5', hr);
-			localStorage.setItem('minutes5', ms);
-			localStorage.setItem('sec5', sc); 
-                  
-			document.getElementById('tm').innerHTML = hours+":"+minutes+":"+sec; 
-		};  
-          
-		var timer = new Timer(document.getElementById(obgId), hours, minutes, sec);
-		timer.start();
-	}
-	
-</script>
-         
-<script>
-           
-	var tt = localStorage.getItem('sec5');
-	console.log(tt);
-     
-	if (isNaN(tt) || localStorage.getItem('sec5') ==null)
-	{
-		localStorage.setItem('hours5', hours);
-		localStorage.setItem('minutes5', minutes);
-		localStorage.setItem('sec5', sec);
-	}
-
-	if (localStorage.getItem('sec5') !=0)
-	{
-		hours = localStorage.getItem('hours5');
-		minutes = localStorage.getItem('minutes5');
-		sec = localStorage.getItem('sec5'); 
-		sec = sec+""
-		if (sec.length<2) sec = "0"+sec;   
-		main();
-	}    
-	document.getElementById('tm').innerHTML = hours+":"+minutes+":"+sec;
-	
-</script>
-
-<body onload="main()">
+<body>
 
 <header>
 	<div class="container">
@@ -185,7 +72,7 @@
 
 <div class="container">
 	<h2>3 Column Grid</h2>
-	<span id="tm" style="color: #767676; font-size: 150%; font-weight: bold;"></span>	
+	
 	<div class="cols cols3">
 	<section class="first col">
 		<h3>Simple vacuum tube tester design</h3>
@@ -259,7 +146,7 @@
 		
 	<section class="col">
 	<h3>Lorem ipsum</h3>
-
+	
 	<ul class="imagebox">
 		<a href="https://allsecrets.github.io/" target="_blank">
 		<img src="images/works_hakodate03.jpg" alt="moriarty" width="100%" align="middle"/></a>
