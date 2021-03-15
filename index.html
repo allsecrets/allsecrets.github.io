@@ -14,29 +14,6 @@
 	<meta name="robots" content="index, follow" />
 </head>
 
-<script>
-
-	var message = "NO";
-	function click(e){
-		if (document.all){
-		if (event.button == 2){
-			alert(message);
-			return false;}
-		}
-		if (document.layers){
-		if (e.which == 3){
-			alert(message);
-			return false;}
-		}
-	}
-	if (document.layers)
-
-	{document.captureEvents(Event.MOUSEDOWN);}
-	document.onmousedown = click;
-	document.oncontextmenu = function(e){return false};
-
-</script>
-
 <body>
 
 <header>
